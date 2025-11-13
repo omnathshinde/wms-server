@@ -1,0 +1,82 @@
+@url = http://localhost:7000/uom
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+
+### Get all uoms
+GET {{url}}?status=1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all uoms
+GET {{url}}/search/records?offset=1&limit=100
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific uom by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new uom
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "kg"
+}
+
+
+###
+
+
+### Update a uom
+PUT {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "update addmin w"
+}
+
+
+###
+
+
+### Delete a uom
+DELETE {{url}}/2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "name": "kg"
+  },
+  {
+    "name": "liter"
+  },
+  {
+    "name": "doller"
+  }
+]

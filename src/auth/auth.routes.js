@@ -1,0 +1,51 @@
+import { Router } from "express";
+
+import customerRoutes from "#routes/customer.routes.js";
+import inwardRoutes from "#routes/inward.routes.js";
+import materialRoutes from "#routes/material.routes.js";
+import putawayRoutes from "#routes/putaway.routes.js";
+import qcRoutes from "#routes/qc.routes.js";
+import rackRoutes from "#routes/rack.routes.js";
+import roleRoutes from "#routes/role.routes.js";
+import roleAccessRoutes from "#routes/roleAccess.routes.js";
+import shelfRoutes from "#routes/shelf.routes.js";
+import siteRoutes from "#routes/site.routes.js";
+import uomRoutes from "#routes/uom.routes.js";
+import userRoutes from "#routes/user.routes.js";
+import zoneRoutes from "#routes/zone.routes.js";
+import auditRoutes from "#src/routes/audit.routes.js";
+import auditItemRoutes from "#src/routes/auditItem.routes.js";
+import auditItemBarcodeRoutes from "#src/routes/auditItemBarcode.routes.js";
+import fifoViolationRoutes from "#src/routes/fifoViolation.routes.js";
+import picklistRoutes from "#src/routes/picklist.routes.js";
+import picklistItemRoutes from "#src/routes/picklistItem.routes.js";
+import picklistItemBarcodeRoutes from "#src/routes/picklistItemBarcode.routes.js";
+import picklistPickerRoutes from "#src/routes/picklistPicker.routes.js";
+import returnBarcodeRoutes from "#src/routes/returnBarcode.routes.js";
+
+const routes = Router();
+
+routes.use("/user", userRoutes);
+routes.use("/role", roleRoutes);
+routes.use("/roleAccess", roleAccessRoutes);
+routes.use("/site", siteRoutes);
+routes.use("/zone", zoneRoutes);
+routes.use("/rack", rackRoutes);
+routes.use("/shelf", shelfRoutes);
+routes.use("/uom", uomRoutes);
+routes.use("/material", materialRoutes);
+routes.use("/customer", customerRoutes);
+routes.use("/inward", inwardRoutes);
+routes.use("/qc", qcRoutes);
+routes.use("/putaway", putawayRoutes);
+routes.use("/picklist", picklistRoutes);
+routes.use("/picklist-items", picklistItemRoutes);
+routes.use("/picklist-picker", picklistPickerRoutes);
+routes.use("/picklist-items-barcode", picklistItemBarcodeRoutes);
+routes.use("/return-barcodes", returnBarcodeRoutes);
+routes.use("/audit", auditRoutes);
+routes.use("/audit-items", auditItemRoutes);
+routes.use("/audit-items-barcode", auditItemBarcodeRoutes);
+routes.use("/fifo-violation", fifoViolationRoutes);
+
+export default routes;

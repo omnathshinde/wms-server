@@ -1,0 +1,88 @@
+@url = http://localhost:7000/roleAccess
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+### Get all roleAccesss
+GET {{url}}?status=1&roleId=35
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all roleAccesss
+GET {{url}}/search/records?status=-0&offset=0&limit=100&name=
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific roleAccess by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new roleAccess
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  { "roleId": 35, "accessId": 1, "status": false },
+  { "roleId": 35, "accessId": 2, "status": false },
+  { "roleId": 35, "accessId": 3, "status": true },
+  { "roleId": 35, "accessId": 4, "status": true },
+  { "roleId": 35, "accessId": 5, "status": true }
+]
+
+
+###
+
+
+### Update a roleAccess
+PUT {{url}}/3
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Pritam"
+}
+
+
+###
+
+
+### Delete a roleAccess
+DELETE {{url}}/2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Suppervisor"
+  },
+  {
+    "name": "Tester"
+  },
+  {
+    "name": "QA Analyst"
+  },
+  {
+    "name": "QA Analyst"
+  }
+]

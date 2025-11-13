@@ -1,0 +1,107 @@
+@url = http://localhost:7000/picklist-items
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlByaXRhbSIsInVzZXJuYW1lIjoicHJpdGFtIiwicm9sZUlkIjoxLCJzaXRlSWQiOjEsImVtcGxveWVlSWQiOiJhZGYyMyIsImlhdCI6MTc2MTU0NzExOH0.Bso_2d2JH0wHGwyshoKxapwCesmWo_R8wi7VZIdDRNE
+
+### Get all picklist-items
+GET {{url}}?status=1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all picklist-items
+GET {{url}}/search/records?offset=0&limit=100&siteName=l
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific picklist-item by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new picklist-items
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "materialName": "Steel Rod 6mm",
+    "customerName": "Tata Steel",
+    "materialDescription": "Used in construction",
+    "quantity": 40
+  },
+  {
+    "materialName": "Laptop",
+    "customerName": "Tata Steel",
+    "materialDescription": "Used in construction",
+    "quantity": 3
+  },
+  {
+    "materialName": "Copper Wire",
+    "customerName": "Reliance",
+    "materialDescription": "High-grade electrical wire",
+    "quantity": 25
+  }
+]
+
+
+
+###
+
+
+### Update a picklist-item
+# Any you want update can be accepted
+PUT {{url}}/12
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Update invt",
+  "description": "mouse",
+  "customerName": "Infosys Tech",
+  "UOM": "kg"
+}
+
+
+###
+
+
+### Delete a picklist-item
+DELETE {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Restore a picklist-item
+PATCH  {{url}}/118
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Iron Bob",
+    "description": "8mm reinforcement rod",
+    "quantity": 200,
+  },
+  {
+    "name": "Steel PLat",
+    "description": "12mm high-strength steel bar",
+    "quantity": 150,
+  }
+]

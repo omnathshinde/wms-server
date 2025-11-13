@@ -1,0 +1,81 @@
+@url = http://localhost:7000
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+### Get all sites
+GET {{url}}/site?status=1&name=baner
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all sites
+GET {{url}}/site/search/records?offset=0&limit=100
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific site by ID
+GET {{url}}/site/7
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new site
+POST {{url}}/site
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Wakad"
+}
+
+
+###
+
+
+### Update a site
+PUT {{url}}/site/7
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Baner"
+}
+
+
+###
+
+
+### Delete a site
+DELETE {{url}}/site/5
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/site/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Zunix"
+  },
+  {
+    "name": "Livguard"
+  },
+  {
+    "name": "Pune"
+  }
+]

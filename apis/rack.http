@@ -1,0 +1,102 @@
+@url = http://localhost:7000
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+
+### Get all racks
+GET {{url}}/rack?status=1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all racks
+GET {{url}}/rack/search/records?offset=0&limit=100&siteName=l
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific rack by ID
+GET {{url}}/rack/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new rack
+POST {{url}}/rack
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "zoneId": 3,
+  "name": "rack3"
+}
+
+
+###
+
+
+### Update a rack
+PUT {{url}}/rack/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "zoneId": 6,
+  "name": "Pune"
+}
+
+
+###
+
+
+### Delete a rack
+DELETE {{url}}/rack/10
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/rack/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+# [
+#   {
+#     "zoneId": 1,
+#     "name": "Rack1"
+#   },
+#   {
+#     "zoneId": 2,
+#     "name": "Rack2"
+#   },
+#   {
+#     "zoneId": 3,
+#     "name": "Rack3"
+#   }
+# ]
+
+# [
+#   { "siteName": "Pune", "zoneName": "Z122", "rackName": "Rack1" },
+#   { "siteName": "Pune", "zoneName": "Z122", "rackName": "Rack2" }
+# ]
+
+[
+  {
+    "siteName":"Pune",
+    "zoneName":"Z122",
+    "rackName":"Rack2wdddddw",
+    "status":true
+    }
+    
+    ]

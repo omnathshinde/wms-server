@@ -1,0 +1,89 @@
+@url = http://localhost:7000/customer
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+### Get all customers
+GET {{url}}?siteName=
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all customers
+GET {{url}}/search/records?offset=0&limit=100&siteName=
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific customer by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new customer
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "siteId": 2,
+  "name": "cctech",
+  "description":"Shinde"
+}
+
+
+###
+
+
+### Update a customer
+PUT {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "siteId": 6,
+  "name": "Pune"
+}
+
+
+###
+
+
+### Delete a customer
+DELETE {{url}}/9
+Authorization: {{token}}
+Content-Type: application/json
+
+### Restore a customer
+PATCH {{url}}/9
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "siteId": 1,
+    "name": "Suppervisor"
+  },
+  {
+    "siteId": 1,
+    "name": "Tester"
+  },
+  {
+    "siteId": 1,
+    "name": "QA Analyst"
+  }
+]

@@ -1,0 +1,105 @@
+@url = http://localhost:7000/inward
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwOTMzMjg3fQ.XmOJvfuW7yDc__gkHV3qh3LVjs8nlHjq_rG-HJ0uaqs
+
+### Get all inwards
+GET {{url}}?status=1&siteId=2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all inwards
+GET {{url}}/search/records?offset=0&limit=100&name=s
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific inward by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new inward
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "siteId": 2,
+  "materialId": 13,
+  "batch": "B-001",
+  "inwardQuantity": 2,
+  "invoice": "INV-123",
+  "manufacturingDate": "2025-10-14",
+  "autoSerial": true
+}
+
+
+###
+
+
+### Update a inward
+# Any you want update can be accepted
+PUT {{url}}/12
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Update invt",
+  "description": "mouse",
+  "customerName": "Infosys Tech",
+  "UOM": "kg"
+}
+
+
+###
+
+
+### Delete a inward
+DELETE {{url}}/2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Restore a inward
+PATCH  {{url}}/
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "site": "Pune",
+    "materialName": "Scanner",
+    "materialDescription": "Scan",
+    "shelfName": "Tester",
+    "batch": "22",
+    "mrp": 1200,
+    "invoice": "INV-1001",
+    "manufacturingDate": "2025-10-14",
+    "barcode": "kljhads"
+  },
+  {
+    "site": "Mumbai",
+    "materialName": "Steel PLat",
+    "materialDescription": "High-tensile steel roll",
+    "batch": "B-2025A",
+    "invoice": "INV-1002",
+    "manufacturingDate": "2025-10-14",
+    "barcode": "mamkjdf"
+  }
+]

@@ -1,0 +1,124 @@
+@url = http://localhost:7000
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+### Get all users
+GET {{url}}/user?
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all users
+GET {{url}}/user/search/records
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific user by ID
+GET {{url}}/user/20
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new user
+POST {{url}}/user
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Omn Shinde",
+  "username": "omnath3",
+  "password": "12345",
+  "employeeId": "2236",
+  "roleId": 2,
+  "siteId": null
+}
+
+
+###
+
+
+### Update a user
+PUT {{url}}/user/47
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "username": "omnath12",
+  "password": "12345",
+  "siteId": 1
+}
+
+
+###
+
+
+### Delete a user
+DELETE {{url}}/role/3
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/user/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "username": "admin",
+    "password": "12345"
+  },
+  {
+    "siteId": 1,
+    "roleId": 2,
+    "employeeId": 11,
+    "username": "omnath",
+    "password": "12345"
+  },
+  {
+    "siteId": 2,
+    "roleId": 3,
+    "employeeId": 12,
+    "username": "shubham",
+    "password": "12345"
+  },
+  {
+    "siteId": 3,
+    "employeeId": 14,
+    "username": "yug",
+    "password": "12345"
+  },
+  {
+    "siteId": 3,
+    "roleId": 3,
+    "employeeId": 15,
+    "username": "sagar",
+    "password": "12345"
+  },
+  {
+    "siteId": 7,
+    "roleId": 2,
+    "employeeId": 13,
+    "username": "sachin",
+    "password": "12345"
+  },
+  {
+    "siteId": 1,
+    "roleId": 4,
+    "employeeId": 16,
+    "username": "ganesh",
+    "password": "12345"
+  }
+]

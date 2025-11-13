@@ -1,0 +1,60 @@
+@url = http://localhost:7000/qc
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+
+### Get all qcs
+GET {{url}}?status=1&inwardId=3
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all qcs
+GET {{url}}/search/records?offset=0&limit=100&
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific qc by ID
+GET {{url}}/17
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new qc
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "inwardId": 3,
+  "qcStatus": "APPROVED",
+  "remark": "Material verified and passed visual inspection"
+}
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "inwardId": 1,
+    "qcStatus": "APPROVED",
+    "remark": "All dimensions verified"
+  },
+  {
+    "inwardId": 2,
+    "qcStatus": "REJECTED",
+    "remark": "Damaged packaging found"
+  }
+]

@@ -1,0 +1,44 @@
+@url = http://localhost:7000/audit
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ik9tbmF0aCBTaGluZGUiLCJ1c2VybmFtZSI6Im9tbmF0aCIsInJvbGVJZCI6Miwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTIzMzIiLCJpYXQiOjE3NjIxNTQzMjJ9.twiDG7k_0qAP7ymeGlz75DYTb-4exxTCFyOTcnU_az0
+
+### Get all audits
+GET {{url}}?status=0
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all audits
+GET {{url}}/search/records?offset=0&limit=2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+
+### Create a new audit
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "siteId": 1
+}
+
+
+###
+
+
+### Update a audit
+PUT {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "siteId": 2,
+  "name": "Pune"
+}

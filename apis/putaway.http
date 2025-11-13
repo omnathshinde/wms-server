@@ -1,0 +1,60 @@
+@url = http://localhost:7000/putaway
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+
+### Get all putaways
+GET {{url}}?status=1&inwardId=1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all putaways
+GET {{url}}/search/records?offset=0&limit=100&
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific putaway by ID
+GET {{url}}/17
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new putaway
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "barcode": "1111111111",
+  "shelfId": 9,
+  "shelfName": "shelf1"
+}
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "inwardId": 1,
+    "putawayStatus": "APPROVED",
+    "remark": "All dimensions verified"
+  },
+  {
+    "inwardId": 2,
+    "putawayStatus": "REJECTED",
+    "remark": "Damaged packaging found"
+  }
+]

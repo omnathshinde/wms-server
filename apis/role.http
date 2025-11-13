@@ -1,0 +1,84 @@
+@url = http://localhost:7000/role
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+
+### Get all roles
+GET {{url}}?status=1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get all roles
+GET {{url}}/search/records?status=-0&offset=0&limit=100&name=
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Get a specific role by ID
+GET {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create a new role
+POST {{url}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Manger"
+}
+
+
+###
+
+
+### Update a role
+PUT {{url}}/3
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name": "Pritam"
+}
+
+
+###
+
+
+### Delete a role
+DELETE {{url}}/2
+Authorization: {{token}}
+Content-Type: application/json
+
+
+###
+
+
+### Create Bulk Users
+POST {{url}}/bulk-records
+Authorization: {{token}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Suppervisor"
+  },
+  {
+    "name": "Tester"
+  },
+  {
+    "name": "QA Analyst"
+  },
+  {
+    "name": "QA Analyst"
+  }
+]
