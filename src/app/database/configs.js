@@ -1,10 +1,14 @@
-export default {
-	database: process.env.DB_NAME,
-	username: process.env.DB_USER,
-	password: process.env.DB_PASS,
+import env from "#app/configs/env.js";
 
-	host: process.env.DB_HOST,
-	dialect: process.env.DB_DIALECT || "mysql",
+const { DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_DIALECT } = env;
+
+export default {
+	database: DB_NAME,
+	username: DB_USER,
+	password: DB_PASS,
+
+	host: DB_HOST,
+	dialect: DB_DIALECT,
 	logging: true,
 	benchmark: true,
 	pool: {

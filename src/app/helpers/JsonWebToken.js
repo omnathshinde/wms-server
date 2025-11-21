@@ -1,24 +1,24 @@
 import jwt from "jsonwebtoken";
 
+import env from "#app/configs/env.js";
+
 // 🔐 Configs
-const JWT_SECRET = process.env.JWT_SECRET_KEY || "fallback-secret";
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN ?? null; // Access token expiry
-const JWT_REFRESH_EXPIRES_IN = process.env.REFRESH_TOKEN_EXPIRES_IN ?? "7d"; // Refresh token expiry
+const { JWT_SECRET_KEY, JWT_EXPIRES_IN, JWT_REFRESH_EXPIRES_IN } = env;
 
 // ----------------------------
 // Generate JWT
 // ----------------------------
 export const generateToken = (payload, expiresIn = JWT_EXPIRES_IN) => {
 	return expiresIn
-		? jwt.sign(payload, JWT_SECRET, { expiresIn })
-		: jwt.sign(payload, JWT_SECRET); // never expires
+		? jwt.sign(payload, JWT_SECRET_KEY, { expiresIn })
+		: jwt.sign(payload, JWT_SECRET_KEY); // never expires
 };
 
 // Generate refresh token separately
 export const generateRefreshToken = (payload, expiresIn = JWT_REFRESH_EXPIRES_IN) => {
 	return expiresIn
-		? jwt.sign(payload, JWT_SECRET, { expiresIn })
-		: jwt.sign(payload, JWT_SECRET); // optional never expire
+		? jwt.sign(payload, JWT_SECRET_KEY, { expiresIn })
+		: jwt.sign(payload, JWT_SECRET_KEY); // optional never expire
 };
 
 // ----------------------------
@@ -26,7 +26,7 @@ export const generateRefreshToken = (payload, expiresIn = JWT_REFRESH_EXPIRES_IN
 // ----------------------------
 export const verifyToken = (token) => {
 	try {
-		return jwt.verify(token, JWT_SECRET);
+		return jwt.verify(token, JWT_SECRET_KEY);
 	} catch {
 		return null; // expired or invalid
 	}

@@ -1,7 +1,8 @@
+import env from "#app/configs/env.js";
 import SequelizeErrors from "#app/helpers/SequelizeErrors.js";
 
 export default (error, request, response, _next) => {
-	const isProduction = process.env.NODE_ENV === "production";
+	const isProduction = env.NODE_ENV === "production";
 
 	let status = error.status || 500;
 	let message = error.message || "Internal Server Error";

@@ -1,3 +1,4 @@
+import env from "#app/configs/env.js";
 import logger from "#app/configs/logger.js";
 import sequelize from "#app/database/index.js";
 import tableRelationship from "#app/helpers/TableRelationship.js";
@@ -13,10 +14,10 @@ export default async () => {
 		console.log("⏳ Connecting to database...");
 		await sequelize.authenticate();
 
-		if (process.env.NODE_ENV === "production") {
+		if (env.NODE_ENV === "production") {
 			console.log("🚫 Production mode: skipping auto-sync");
 			await sequelize.sync();
-		} else if (process.env.NODE_ENV === "staging") {
+		} else if (env.NODE_ENV === "staging") {
 			await sequelize.sync({ alter: false });
 			console.log("🧪 Staging mode: syncing with alter:false (safe sync)...");
 		} else {

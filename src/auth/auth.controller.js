@@ -1,10 +1,11 @@
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 
+import env from "#app/configs/env.js";
 import logger from "#app/configs/logger.js";
 import { Access, Role, RoleAccess, Site, User } from "#src/index.js";
 
-const SECRET_KEY = process.env.JWT_SECRET_KEY;
+const SECRET_KEY = env.JWT_SECRET_KEY;
 
 export default async (req, res) => {
 	// try {
@@ -81,9 +82,9 @@ export default async (req, res) => {
 			role: user["role.name"] || "",
 			site: user["site.name"] || "",
 			employeeId: user.employeeId,
-			token: token,
 		},
 		access: accessNames,
+		token,
 	};
 	logger.warn("User Logged", { "Auth User": user.username });
 	return res.sendSuccess(200, data);
