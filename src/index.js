@@ -1,5 +1,4 @@
-import sequelize from "#db/index.js";
-import { tables } from "#db/index.js";
+import sequelize, { tables } from "#db/index.js";
 
 export { sequelize };
 export const {

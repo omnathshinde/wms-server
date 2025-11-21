@@ -1,4 +1,5 @@
 import HttpError from "http-errors";
+
 const toPlain = (data) => {
 	if (Array.isArray(data)) {
 		return data.map((d) => (typeof d?.get === "function" ? d.get({ plain: true }) : d));
