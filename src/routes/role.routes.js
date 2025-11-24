@@ -1,6 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 
+import asyncHandler from "#src/app/middlewares/asyncHandler.js";
 import * as role from "#src/controllers/role.controller.js";
 
 const roleRoutes = express.Router();
@@ -8,7 +9,7 @@ const roleRoutes = express.Router();
 roleRoutes
 	.route("")
 	.get(expressAsyncHandler(role.getAll))
-	.post(expressAsyncHandler(role.create));
+	.post(asyncHandler(role.create));
 
 roleRoutes
 	.route("/:id")
