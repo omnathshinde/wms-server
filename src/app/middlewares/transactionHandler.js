@@ -2,7 +2,7 @@ import onFinished from "on-finished";
 
 import sequelize from "#app/database/index.js";
 
-export default async function transactionHandler(req, res, next) {
+export default async (req, res, next) => {
 	const transaction = await sequelize.transaction();
 	req.transaction = transaction;
 	let done = false;
@@ -32,4 +32,4 @@ export default async function transactionHandler(req, res, next) {
 		await finish(error);
 		next(error);
 	}
-}
+};
