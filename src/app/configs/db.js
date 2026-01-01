@@ -4,14 +4,8 @@ import sequelize from "#app/database/index.js";
 import tableRelationship from "#app/helpers/TableRelationship.js";
 
 export default async () => {
+	logger.info("⏳ Connecting to database...");
 	try {
-		process.on("SIGINT", async () => {
-			console.log("🔌 Closing DB connection...");
-			await sequelize.close();
-			console.log("❌ DB connection closed.");
-			process.exit(0);
-		});
-		console.log("⏳ Connecting to database...");
 		await sequelize.authenticate();
 
 		if (env.NODE_ENV === "production") {
@@ -26,14 +20,18 @@ export default async () => {
 		}
 
 		const modelNames = Object.keys(sequelize.models);
-		console.log("✅ Database connected successfully!");
-		console.log("📌 Synchronized Models:", modelNames.length ? modelNames : "None");
-		console.log("🔍 Table Relationships:");
+		logger.info("✅ Database connected successfully!");
+		logger.info("📌 Synchronized Models:", modelNames.length ? modelNames : "None");
+		logger.info("🔍 Table Relationships:");
 		tableRelationship(sequelize);
 	} catch (error) {
 		logger.error("❌ Database connection failed:", error.message);
-		console.error("❌ Database connection failed:", error.message);
-		console.error(error);
+		logger.error("❌ Database initialization failed", {
+			message: error.message,
+			stack: error.stack,
+		});
 		process.exit(1);
+	} finally {
+		logger.info("🧹 Database initialization attempt completed");
 	}
 };

@@ -29,7 +29,6 @@ export default (req, res, next) => {
 		} else if (error.name === "JsonWebTokenError") {
 			return res.sendError(401, "Invalid User");
 		}
-		next();
 		return res.sendError(403, "Access denied");
 	}
 };
