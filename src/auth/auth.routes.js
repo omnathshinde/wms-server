@@ -16,6 +16,7 @@ import zoneRoutes from "#routes/zone.routes.js";
 import auditRoutes from "#src/routes/audit.routes.js";
 import auditItemRoutes from "#src/routes/auditItem.routes.js";
 import auditItemBarcodeRoutes from "#src/routes/auditItemBarcode.routes.js";
+import dashboardRoutes from "#src/routes/dashboard.routes.js";
 import fifoViolationRoutes from "#src/routes/fifoViolation.routes.js";
 import picklistRoutes from "#src/routes/picklist.routes.js";
 import picklistItemRoutes from "#src/routes/picklistItem.routes.js";
@@ -48,4 +49,5 @@ routes.use("/audit-items", auditItemRoutes);
 routes.use("/audit-items-barcode", auditItemBarcodeRoutes);
 routes.use("/fifo-violation", fifoViolationRoutes);
 
+routes.use("/dashboard", dashboardRoutes);
 export default routes;
