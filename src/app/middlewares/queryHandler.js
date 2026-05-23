@@ -148,9 +148,11 @@ class WhereBuilder {
 	status(status) {
 		if (status == 1 || status === true || status === "true") {
 			this.where.deletedAt = { [Op.is]: null };
+			this.where.status = true;
 			this.active = true;
 		} else if (status == 0 || status === false || status === "false") {
 			this.where.deletedAt = { [Op.not]: null };
+			this.where.status = false;
 			this.active = false;
 		} else {
 			this.active = false;

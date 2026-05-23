@@ -40,6 +40,17 @@ export default async (sequelize) => {
 			defaultValue: "system",
 		};
 		attributes.deletedBy = { type: DataTypes.STRING, allowNull: true };
+
+		attributes.status = {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			defaultValue: true,
+			comment: "Active status",
+			field: "status",
+			validate: {
+				notNull: { msg: "Status is required" },
+			},
+		};
 	});
 
 	sequelize.addHook("afterDefine", (model) => {
@@ -92,6 +103,7 @@ export default async (sequelize) => {
 
 	sequelize.addHook("beforeDestroy", async (instance) => {
 		instance.deletedBy = getCurrentUser();
+		instance.status = false;
 		await instance.save({ hooks: false, silent: true });
 	});
 
@@ -107,6 +119,7 @@ export default async (sequelize) => {
 		if (instance.constructor?.options?.paranoid) {
 			instance.deletedBy = null;
 			instance.updatedBy = getCurrentUser();
+			instance.status = true;
 			await instance.save({
 				hooks: false,
 				silent: true,
