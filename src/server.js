@@ -44,7 +44,7 @@ if (HTTPS) {
 		server.listen(PORT, HOST, () => {
 			logger.info("✅ Server started successfully");
 			console.log(
-				`✅ Server running at ${HTTPS ? "https" : "http"}://${HOST}:${PORT}`,
+				`🚀 Server Running Environment : ${env.NODE_ENV}\n🔗 URL : ${env.HTTPS ? "https" : "http"}://${env.HOST}:${env.PORT}`,
 			);
 		});
 	} catch (error) {
