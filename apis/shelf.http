@@ -1,4 +1,4 @@
-@url = http://localhost:7000
+@url = http://localhost:3000
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ik9tbmF0aCBTaGluZGUiLCJ1c2VybmFtZSI6Im9tbmF0aCIsInJvbGVJZCI6Miwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTIzMzIiLCJpYXQiOjE3NjE2Mzk5MzN9.3_XamDTQQbangJh6TY5mzF7EeE1iuiyVQXqRMnrnLGQ
 
 ### Get all shelfs

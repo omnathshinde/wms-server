@@ -1,4 +1,4 @@
-@url = http://localhost:7000/material
+@url = http://localhost:3000/material
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImdhbmVzaCIsInJvbGVJZCI6NCwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTYiLCJpYXQiOjE3NjA5Mzk3MTJ9.HzwQCSWnFpVtr7wi_5FR3xpcPcCWOy2ZhLYQZIU_AzQ
 
 

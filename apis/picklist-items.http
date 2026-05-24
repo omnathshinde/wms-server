@@ -1,4 +1,4 @@
-@url = http://localhost:7000/picklist-items
+@url = http://localhost:3000/picklist-items
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlByaXRhbSIsInVzZXJuYW1lIjoicHJpdGFtIiwicm9sZUlkIjoxLCJzaXRlSWQiOjEsImVtcGxveWVlSWQiOiJhZGYyMyIsImlhdCI6MTc2MTU0NzExOH0.Bso_2d2JH0wHGwyshoKxapwCesmWo_R8wi7VZIdDRNE
 
 ### Get all picklist-items

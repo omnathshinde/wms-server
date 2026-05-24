@@ -9,7 +9,7 @@ export default {
 
 	host: DB_HOST,
 	dialect: DB_DIALECT,
-	logging: true,
+	logging: env.NODE_ENV === "development" ? console.log : false,
 	benchmark: true,
 	pool: {
 		min: 0,

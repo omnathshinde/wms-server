@@ -1,4 +1,4 @@
-@url = http://localhost:7000/inward
+@url = http://localhost:3000/inward
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwOTMzMjg3fQ.XmOJvfuW7yDc__gkHV3qh3LVjs8nlHjq_rG-HJ0uaqs
 
 ### Get all inwards
