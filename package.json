@@ -20,8 +20,10 @@
 		"#controllers/*": "./src/controllers/*"
 	},
 	"scripts": {
-		"start": "node src/server",
+		"build": "tsup",
+		"start": "node dist/server",
 		"dev": "nodemon src/server",
+		"publish": "npm run build && npm run start",
 		"prepare": "husky",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
@@ -60,7 +62,8 @@
 		"lint-staged": "^16.2.6",
 		"nodemon": "^3.1.10",
 		"prettier": "^3.6.2",
-		"prettier-eslint": "^16.4.2"
+		"prettier-eslint": "^16.4.2",
+		"tsup": "^8.5.1"
 	},
 	"lint-staged": {
 		"**/*.{js}": [
