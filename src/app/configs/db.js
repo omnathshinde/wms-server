@@ -1,3 +1,4 @@
+import databaseError from "#/src/app/errors/databaseError.js";
 import env from "#app/configs/env.js";
 import logger from "#app/configs/logger.js";
 import sequelize from "#app/database/index.js";
@@ -25,11 +26,7 @@ export default async () => {
 		logger.info("🔍 Table Relationships:");
 		tableRelationship(sequelize);
 	} catch (error) {
-		logger.error("❌ Database connection failed:", error.message);
-		logger.error("❌ Database initialization failed", {
-			message: error.message,
-			stack: error.stack,
-		});
+		databaseError(error);
 		process.exit(1);
 	} finally {
 		logger.info("🧹 Database initialization attempt completed");

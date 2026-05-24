@@ -38,7 +38,7 @@ if (HTTPS) {
 // 🚀 Start Server
 (async () => {
 	try {
-		console.clear();
+		// console.clear();
 		await connectDB();
 		await seedAdmin();
 		server.listen(PORT, HOST, () => {

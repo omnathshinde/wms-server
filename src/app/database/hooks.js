@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 
+import env from "#src/app/configs/env.js";
 import asyncLocalStorage from "#src/app/helpers/AppLocalStorage.js";
 
 const getCurrentUser = () => asyncLocalStorage.getStore()?.user ?? "system";
@@ -10,12 +11,16 @@ export default async (sequelize) => {
 		console.log("🔌 Connecting to DB...", {
 			host: config.host,
 			database: config.database,
-			dialect: config.dialect,
+			dialect: sequelize.getDialect(),
 		});
 	});
 
 	sequelize.addHook("afterConnect", ({ config }) => {
-		console.log("✅ DB connected", config.database);
+		console.log("✅ DB connected", {
+			host: config.host,
+			database: config.database,
+			dialect: sequelize.getDialect(),
+		});
 	});
 
 	// before disconnect
@@ -136,9 +141,11 @@ export default async (sequelize) => {
 		console.log("♻️ Bulk restore completed");
 	});
 
-	sequelize.addHook("afterFind", (result) => {
-		console.log(
-			`📤 Query returned ${Array.isArray(result) ? result.length : result ? 1 : 0} rows`,
-		);
-	});
+	if (env.NODE_ENV == "development") {
+		sequelize.addHook("afterFind", (result) => {
+			console.log(
+				`📤 Query returned ${Array.isArray(result) ? result.length : result ? 1 : 0} rows`,
+			);
+		});
+	}
 };
