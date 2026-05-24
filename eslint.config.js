@@ -8,6 +8,9 @@ import globals from "globals";
 
 export default defineConfig([
 	{
+		ignores: ["dist/**", "node_modules/**", "coverage/**", "build/**", ".git/**"],
+	},
+	{
 		files: ["**/*.{js,mjs,cjs}"],
 		extends: ["js/recommended"],
 		languageOptions: { globals: globals.node },
