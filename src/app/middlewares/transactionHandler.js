@@ -1,6 +1,6 @@
 import onFinished from "on-finished";
 
-import sequelize from "#app/database/index.js";
+import sequelize from "#src/app/database/index.js";
 
 export default async (req, res, next) => {
 	const transaction = await sequelize.transaction();

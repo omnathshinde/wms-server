@@ -1,7 +1,6 @@
 export const AccessScreen = [
 	{ name: "Role Master", description: "CRUD Operation" },
 	{ name: "User Master", description: "CRUD Operation" },
-	// { name: "UOM Master", description: "CRUD Operation" },
 	{ name: "Site Master", description: "CRUD Operation" },
 	{ name: "Zone Master", description: "CRUD Operation" },
 	{ name: "Rack Master", description: "CRUD Operation" },

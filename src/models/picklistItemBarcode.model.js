@@ -3,7 +3,10 @@ import { DataTypes, Model } from "sequelize";
 export default (sequelize) => {
 	class PicklistItemBarcode extends Model {
 		static associate({ Inward, PicklistItem }) {
-			this.belongsTo(PicklistItem, { foreignKey: "picklistItemId", as: "picklistItem" });
+			this.belongsTo(PicklistItem, {
+				foreignKey: "picklistItemId",
+				as: "picklistItem",
+			});
 			this.belongsTo(Inward, { foreignKey: "inwardId", as: "inward" });
 		}
 	}

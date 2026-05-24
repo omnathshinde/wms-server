@@ -1,6 +1,6 @@
 import { Op } from "sequelize";
 
-import { tables } from "#db/index.js";
+import { tables } from "#src/app/database/index.js";
 
 /**
  * Generic, future-proof Sequelize query builder middleware.
@@ -239,7 +239,8 @@ class WhereBuilder {
 		const [association, ...rest] = parts;
 		const field = rest.pop();
 		const targetModel = model || this.models[association];
-		if (!targetModel) throw new Error(`Model not found for association: ${association}`);
+		if (!targetModel)
+			throw new Error(`Model not found for association: ${association}`);
 
 		let includeObj = this.include.find((i) => i.as === association);
 		if (!includeObj) {

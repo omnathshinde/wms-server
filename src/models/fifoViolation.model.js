@@ -35,7 +35,8 @@ export default (sequelize) => {
 			reason: {
 				type: DataTypes.STRING,
 				allowNull: false,
-				defaultValue: "FIFO is violated: tried to pick newer material before older batch",
+				defaultValue:
+					"FIFO is violated: tried to pick newer material before older batch",
 			},
 			blockedByBarcode: {
 				type: DataTypes.STRING,

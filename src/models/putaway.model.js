@@ -4,8 +4,14 @@ export default (sequelize) => {
 	class Putaway extends Model {
 		static associate({ Inward, Shelf }) {
 			this.belongsTo(Inward, { foreignKey: "inwardId", as: "inward" });
-			this.belongsTo(Shelf, { foreignKey: "currentShelfId", as: "currentLocation" });
-			this.belongsTo(Shelf, { foreignKey: "previousShelfId", as: "previousLocation" });
+			this.belongsTo(Shelf, {
+				foreignKey: "currentShelfId",
+				as: "currentLocation",
+			});
+			this.belongsTo(Shelf, {
+				foreignKey: "previousShelfId",
+				as: "previousLocation",
+			});
 		}
 	}
 

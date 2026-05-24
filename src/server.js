@@ -4,11 +4,11 @@ import fs from "fs";
 import http from "http";
 import https from "https";
 
-import connectDB from "#app/configs/db.js";
-import env from "#app/configs/env.js";
-import logger from "#app/configs/logger.js";
-import seedAdmin from "#app/configs/seedAdmin.js";
-import app from "#src/app.js";
+import app from "#src/app/app.js";
+import connectDB from "#src/app/configs/db.js";
+import env from "#src/app/configs/env.js";
+import logger from "#src/app/configs/logger.js";
+import seedAdmin from "#src/app/configs/seedAdmin.js";
 
 // 🌍 Config
 const { PORT, HOST, HTTPS, SSL_KEY_PATH, SSL_CERT_PATH, SSL_CA_PATH } = env;
@@ -43,7 +43,9 @@ if (HTTPS) {
 		await seedAdmin();
 		server.listen(PORT, HOST, () => {
 			logger.info("✅ Server started successfully");
-			console.log(`✅ Server running at ${HTTPS ? "https" : "http"}://${HOST}:${PORT}`);
+			console.log(
+				`✅ Server running at ${HTTPS ? "https" : "http"}://${HOST}:${PORT}`,
+			);
 		});
 	} catch (error) {
 		console.error("❌ Server startup failed:", error.message);

@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 
-import dbConfig from "#db/configs.js";
-import hooks from "#db/hooks.js";
-import models from "#db/models.js";
+import dbConfig from "./configs.js";
+import hooks from "./hooks.js";
+import models from "./models.js";
 
 const sequelize = new Sequelize(dbConfig);
 await hooks(sequelize);

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import env from "#app/configs/env.js";
+import env from "#src/app/configs/env.js";
 
 // 🔐 Configs
 const { JWT_SECRET_KEY, JWT_EXPIRES_IN, JWT_REFRESH_EXPIRES_IN } = env;

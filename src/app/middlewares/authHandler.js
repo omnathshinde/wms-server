@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import env from "#app/configs/env.js";
+import env from "#src/app/configs/env.js";
 
 const JWT_SECRET_KEY = env.JWT_SECRET_KEY;
 

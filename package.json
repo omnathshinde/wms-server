@@ -13,11 +13,7 @@
 	"imports": {
 		"#/*": "./*",
 		"#logs": "./logs",
-		"#src/*": "./src/*",
-		"#app/*": "./src/app/*",
-		"#db/*": "./src/app/database/*",
-		"#routes/*": "./src/routes/*",
-		"#controllers/*": "./src/controllers/*"
+		"#src/*": "./src/*"
 	},
 	"scripts": {
 		"build": "tsup",

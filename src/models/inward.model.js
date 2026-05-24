@@ -140,7 +140,12 @@ export default (sequelize) => {
 				defaultValue: true,
 			},
 			auditStatus: {
-				type: DataTypes.ENUM("Found", "Not Found", "Scrapped", "Manually Approved"),
+				type: DataTypes.ENUM(
+					"Found",
+					"Not Found",
+					"Scrapped",
+					"Manually Approved",
+				),
 				allowNull: false,
 				defaultValue: "Found",
 			},

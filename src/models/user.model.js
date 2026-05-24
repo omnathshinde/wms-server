@@ -62,7 +62,9 @@ export default (sequelize) => {
 				},
 				beforeBulkUpdate: async (options) => {
 					if (options.attributes.password) {
-						options.attributes.password = await argon2.hash(options.attributes.password);
+						options.attributes.password = await argon2.hash(
+							options.attributes.password,
+						);
 					}
 				},
 			},

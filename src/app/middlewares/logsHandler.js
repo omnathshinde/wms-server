@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import morgan from "morgan";
 
-import logger from "#app/configs/logger.js";
+import logger from "#src/app/configs/logger.js";
 
 const jsonFormat = (tokens, req, res) => {
 	return JSON.stringify({

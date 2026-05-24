@@ -24,12 +24,12 @@ A comprehensive Node.js/Express backend server for managing warehouse operations
 - **Authentication & Authorization**: JWT-based authentication with role-based access control (RBAC)
 - **Inventory Management**: Complete material and inventory tracking system
 - **Warehouse Operations**:
-  - Inward processing
-  - Putaway operations
-  - Quality Control (QC)
-  - Picklist management
-  - FIFO violation tracking
-  - Audit operations
+    - Inward processing
+    - Putaway operations
+    - Quality Control (QC)
+    - Picklist management
+    - FIFO violation tracking
+    - Audit operations
 - **Location Management**: Sites, Zones, Racks, and Shelves
 - **Customer Management**: Customer data and relationship tracking
 - **Barcode Integration**: Barcode scanning support for picklist items and audits
@@ -61,27 +61,27 @@ A comprehensive Node.js/Express backend server for managing warehouse operations
 
 1. **Clone the repository**
 
-   ```bash
-   git clone <repository-url>
-   cd server
-   ```
+    ```bash
+    git clone <repository-url>
+    cd server
+    ```
 
 2. **Install dependencies**
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 3. **Set up environment variables**
-   - Create `.env.development` for development
-   - Create `.env.testing` for testing
-   - Create `.env.production` for production
-   - See [Environment Variables](#environment-variables) section for required variables
+    - Create `.env.development` for development
+    - Create `.env.testing` for testing
+    - Create `.env.production` for production
+    - See [Environment Variables](#environment-variables) section for required variables
 
 4. **Set up the database**
-   - Create a MySQL database
-   - Update database credentials in your `.env` file
-   - The application will automatically sync database models on startup
+    - Create a MySQL database
+    - Update database credentials in your `.env` file
+    - The application will automatically sync database models on startup
 
 ## 🔐 Environment Variables
 
@@ -270,17 +270,17 @@ To enable HTTPS:
 
 1. Set `HTTPS=true` in your environment file
 2. Provide paths to SSL certificate files:
-   - `SSL_KEY_PATH`
-   - `SSL_CERT_PATH`
-   - `SSL_CA_PATH` (optional)
+    - `SSL_KEY_PATH`
+    - `SSL_CERT_PATH`
+    - `SSL_CA_PATH` (optional)
 
 ## 🔒 Security Features
 
 - **Helmet**: Sets various HTTP headers for security
 - **CORS**: Configurable Cross-Origin Resource Sharing
 - **Rate Limiting**:
-  - API rate limiting for general endpoints
-  - Stricter rate limiting for login endpoints
+    - API rate limiting for general endpoints
+    - Stricter rate limiting for login endpoints
 - **JWT Authentication**: Secure token-based authentication
 - **Password Hashing**: Argon2 for secure password storage
 - **Input Validation**: Request validation middleware

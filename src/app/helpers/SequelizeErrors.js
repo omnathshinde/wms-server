@@ -48,10 +48,12 @@ export default (error) => {
 			return {
 				status: sequelizeErrors.UniqueConstraintError.status,
 				message:
-					sequelizeErrors.UniqueConstraintError.message || "Unique constraint error",
+					sequelizeErrors.UniqueConstraintError.message ||
+					"Unique constraint error",
 				errors: error.errors.map((e) => ({
 					field: e.path,
-					message: e.message || sequelizeErrors.UniqueConstraintError.defaultField,
+					message:
+						e.message || sequelizeErrors.UniqueConstraintError.defaultField,
 				})),
 			};
 
@@ -61,7 +63,9 @@ export default (error) => {
 				message:
 					sequelizeErrors.ForeignKeyConstraintError.message ||
 					"Invalid foreign key reference",
-				errors: [{ message: sequelizeErrors.ForeignKeyConstraintError.defaultField }],
+				errors: [
+					{ message: sequelizeErrors.ForeignKeyConstraintError.defaultField },
+				],
 			};
 
 		case "SequelizeDatabaseError":
@@ -74,7 +78,9 @@ export default (error) => {
 		case "SequelizeOptimisticLockError":
 			return {
 				status: sequelizeErrors.OptimisticLockError.status,
-				message: sequelizeErrors.OptimisticLockError.message || "Optimistic lock error",
+				message:
+					sequelizeErrors.OptimisticLockError.message ||
+					"Optimistic lock error",
 				errors: [{ message: sequelizeErrors.OptimisticLockError.defaultField }],
 			};
 

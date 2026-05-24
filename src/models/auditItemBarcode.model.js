@@ -44,7 +44,12 @@ export default (sequelize) => {
 				allowNull: true,
 			},
 			barcodeStatus: {
-				type: DataTypes.ENUM("Found", "Not Found", "Scrapped", "Manually Approved"),
+				type: DataTypes.ENUM(
+					"Found",
+					"Not Found",
+					"Scrapped",
+					"Manually Approved",
+				),
 				allowNull: false,
 				defaultValue: "Not Found",
 			},

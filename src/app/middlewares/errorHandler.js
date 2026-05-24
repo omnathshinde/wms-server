@@ -1,5 +1,5 @@
-import env from "#app/configs/env.js";
-import SequelizeErrors from "#app/helpers/SequelizeErrors.js";
+import env from "#src/app/configs/env.js";
+import SequelizeErrors from "#src/app/helpers/SequelizeErrors.js";
 
 export default (error, request, response, _next) => {
 	const isProduction = env.NODE_ENV === "production";

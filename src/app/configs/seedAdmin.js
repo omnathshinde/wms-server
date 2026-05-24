@@ -1,5 +1,5 @@
-import { AccessScreen } from "#app/helpers/AppAdminData.js";
-import { Access, Role, RoleAccess, sequelize, User } from "#src/index.js";
+import { AccessScreen } from "#src/app/helpers/AppAdminData.js";
+import { Access, Role, RoleAccess, sequelize, User } from "#src/models/index.js";
 
 export default async () => {
 	const transaction = await sequelize.transaction();

@@ -1,0 +1,53 @@
+import { Router } from "express";
+
+import dashboardRoutes from "#src/modules/dashboard/dashboard.routes.js";
+import roleAccessRoutes from "#src/modules/masters/access/roleAccess.routes.js";
+import customerRoutes from "#src/modules/masters/customer/customer.routes.js";
+import rackRoutes from "#src/modules/masters/locations/rack/rack.routes.js";
+import shelfRoutes from "#src/modules/masters/locations/shelf/shelf.routes.js";
+import siteRoutes from "#src/modules/masters/locations/site/site.routes.js";
+import zoneRoutes from "#src/modules/masters/locations/zone/zone.routes.js";
+import materialRoutes from "#src/modules/masters/material/material.routes.js";
+import roleRoutes from "#src/modules/masters/role/role.routes.js";
+import uomRoutes from "#src/modules/masters/uom/uom.routes.js";
+import userRoutes from "#src/modules/masters/user/user.routes.js";
+import auditRoutes from "#src/modules/operations/audit/audit.routes.js";
+import auditItemRoutes from "#src/modules/operations/audit/auditItem/auditItem.routes.js";
+import auditItemBarcodeRoutes from "#src/modules/operations/audit/auditItemBarcode/auditItemBarcode.routes.js";
+import inwardRoutes from "#src/modules/operations/inward/inward.routes.js";
+import picklistRoutes from "#src/modules/operations/picklist/picklist.routes.js";
+import picklistItemRoutes from "#src/modules/operations/picklist/picklistItem/picklistItem.routes.js";
+import picklistItemBarcodeRoutes from "#src/modules/operations/picklist/picklistItemBarcode/picklistItemBarcode.routes.js";
+import picklistPickerRoutes from "#src/modules/operations/picklist/picklistPicker/picklistPicker.routes.js";
+import putawayRoutes from "#src/modules/operations/putaway/putaway.routes.js";
+import qcRoutes from "#src/modules/operations/qc/qc.routes.js";
+import returnBarcodeRoutes from "#src/modules/operations/return/returnBarcode.routes.js";
+import fifoViolationRoutes from "#src/modules/operations/violation/fifoViolation.routes.js";
+
+const routes = Router();
+
+routes.use("/user", userRoutes);
+routes.use("/role", roleRoutes);
+routes.use("/roleAccess", roleAccessRoutes);
+routes.use("/site", siteRoutes);
+routes.use("/zone", zoneRoutes);
+routes.use("/rack", rackRoutes);
+routes.use("/shelf", shelfRoutes);
+routes.use("/uom", uomRoutes);
+routes.use("/material", materialRoutes);
+routes.use("/customer", customerRoutes);
+routes.use("/inward", inwardRoutes);
+routes.use("/qc", qcRoutes);
+routes.use("/putaway", putawayRoutes);
+routes.use("/picklist", picklistRoutes);
+routes.use("/picklist-items", picklistItemRoutes);
+routes.use("/picklist-picker", picklistPickerRoutes);
+routes.use("/picklist-items-barcode", picklistItemBarcodeRoutes);
+routes.use("/return-barcodes", returnBarcodeRoutes);
+routes.use("/audit", auditRoutes);
+routes.use("/audit-items", auditItemRoutes);
+routes.use("/audit-items-barcode", auditItemBarcodeRoutes);
+routes.use("/fifo-violation", fifoViolationRoutes);
+
+routes.use("/dashboard", dashboardRoutes);
+export default routes;

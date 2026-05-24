@@ -5,7 +5,10 @@ export default (sequelize) => {
 		static associate({ Picklist, User }) {
 			this.belongsTo(Picklist, { foreignKey: "picklistId", as: "picklist" });
 			this.belongsTo(User, { foreignKey: "currentPickerId", as: "currentPicker" });
-			this.belongsTo(User, { foreignKey: "previousPickerId", as: "previousPicker" });
+			this.belongsTo(User, {
+				foreignKey: "previousPickerId",
+				as: "previousPicker",
+			});
 		}
 	}
 
