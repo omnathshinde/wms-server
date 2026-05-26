@@ -21,6 +21,7 @@ export default (sequelize) => {
 			description: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				defaultValue: "Putaway Location",
 			},
 			barcode: {
 				type: DataTypes.STRING,

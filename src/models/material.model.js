@@ -21,6 +21,7 @@ export default (sequelize) => {
 			description: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				defualtValue: "Material Description",
 			},
 			customerName: {
 				type: DataTypes.STRING,

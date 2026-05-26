@@ -19,6 +19,7 @@ export const getAll = async (req, res) => {
 export const search = async (req, res) => {
 	const { offset, limit, status, name, siteId, siteName } = req.query;
 	const data = await req.queryBuilder
+		.site(req)
 		.paginate(offset, limit)
 		.status(status)
 		.like("name", name)
