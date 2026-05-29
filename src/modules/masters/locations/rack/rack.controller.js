@@ -1,6 +1,6 @@
 import { Op } from "sequelize";
 
-import { Rack, Site, Zone } from "#src/models/index.js";
+import { Rack, Shelf, Site, Zone } from "#src/models/index.js";
 
 const parsePagination = (offset, limit) => ({
 	offset: Number.isFinite(Number(offset)) ? Number(offset) : 0,
@@ -131,17 +131,29 @@ export const update = async (req, res) => {
 };
 
 export const destroy = async (req, res) => {
-	const data = await Rack.destroy({
-		where: { id: req.params.id },
-	});
-	if (!data) {
+	const { transaction } = req;
+	const rack = await Rack.findByPk(req.params.id, { transaction });
+
+	if (!rack) {
 		return res.sendError(404, "Rack not found");
 	}
+
+	await rack.destroy({ transaction });
+	await Shelf.destroy({ where: { rackId: req.params.id }, transaction });
 	return res.sendSuccess(200, "Rack deleted successfully");
 };
 
 export const restore = async (req, res) => {
-	await Rack.restore({ where: { id: req.params.id } });
+	const { transaction } = req;
+	const rack = await Rack.findByPk(req.params.id, { paranoid: false, transaction });
+
+	if (!rack) {
+		await transaction.rollback();
+		return res.sendError(404, "Rack not found");
+	}
+
+	await Rack.restore({ where: { id: req.params.id }, transaction });
+	await Shelf.restore({ where: { rackId: req.params.id }, transaction });
 	return res.sendSuccess(200, "Rack restored successfully");
 };
 

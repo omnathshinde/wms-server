@@ -1,4 +1,4 @@
-import { Site } from "#src/models/index.js";
+import { Rack, Shelf, Site, Zone } from "#src/models/index.js";
 
 export const getAll = async (req, res) => {
 	const { offset, limit, status, name } = req.query;
@@ -44,20 +44,65 @@ export const update = async (req, res) => {
 };
 
 export const destroy = async (req, res) => {
-	const data = await Site.destroy({
-		where: { id: req.params.id },
-	});
-	if (!data) {
+	const { transaction } = req;
+	const site = await Site.findByPk(req.params.id, { transaction });
+
+	if (!site) {
 		return res.sendError(404, "Site not found");
 	}
+
+	const zones = await Zone.findAll({
+		where: { siteId: req.params.id },
+		attributes: ["id"],
+		transaction,
+	});
+
+	const zoneIds = zones.map((zone) => zone.id);
+
+	const racks = await Rack.findAll({
+		where: { zoneId: zoneIds },
+		attributes: ["id"],
+		transaction,
+	});
+
+	const rackIds = racks.map((rack) => rack.id);
+
+	await site.destroy({ transaction });
+	await Zone.destroy({ where: { siteId: req.params.id }, transaction });
+	await Rack.destroy({ where: { zoneId: zoneIds }, transaction });
+	await Shelf.destroy({ where: { rackId: rackIds }, transaction });
 	return res.sendSuccess(200, "Site deleted successfully");
 };
 
 export const restore = async (req, res) => {
-	const data = await Site.restore({ where: { id: req.params.id } });
-	if (!data) {
+	const { transaction } = req;
+	const site = await Site.findByPk(req.params.id, { paranoid: false, transaction });
+
+	if (!site) {
 		return res.sendError(404, "Site not found");
 	}
+
+	const zones = await Zone.findAll({
+		where: { siteId: req.params.id },
+		paranoid: false,
+		attributes: ["id"],
+		transaction,
+	});
+
+	const zoneIds = zones.map((zone) => zone.id);
+	const racks = await Rack.findAll({
+		where: { zoneId: zoneIds },
+		paranoid: false,
+		attributes: ["id"],
+		transaction,
+	});
+
+	const rackIds = racks.map((rack) => rack.id);
+
+	await Site.restore({ where: { id: req.params.id }, transaction });
+	await Zone.restore({ where: { siteId: req.params.id }, transaction });
+	await Rack.restore({ where: { zoneId: zoneIds }, transaction });
+	await Shelf.restore({ where: { rackId: rackIds }, transaction });
 	return res.sendSuccess(200, "Site restored successfully");
 };
 

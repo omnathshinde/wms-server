@@ -1,4 +1,4 @@
-import { Site, Zone } from "#src/models/index.js";
+import { Rack, Shelf, Site, Zone } from "#src/models/index.js";
 
 export const getAll = async (req, res) => {
 	const { offset, limit, status, name, siteId, siteName } = req.query;
@@ -59,20 +59,60 @@ export const update = async (req, res) => {
 };
 
 export const destroy = async (req, res) => {
-	const data = await Zone.destroy({
-		where: { id: req.params.id },
-	});
-	if (!data) {
+	const { transaction } = req;
+	const zone = await Zone.findByPk(req.params.id, { transaction });
+	if (!zone) {
+		await transaction.rollback();
+
 		return res.sendError(404, "Zone not found");
 	}
+	const racks = await Rack.findAll({
+		where: {
+			zoneId: req.params.id,
+		},
+		attributes: ["id"],
+		transaction,
+	});
+
+	const rackIds = racks.map((rack) => rack.id);
+	await zone.destroy({ transaction });
+	await Rack.destroy({
+		where: {
+			zoneId: req.params.id,
+		},
+		transaction,
+	});
+	await Shelf.destroy({
+		where: {
+			rackId: rackIds,
+		},
+		transaction,
+	});
 	return res.sendSuccess(200, "Zone deleted successfully");
 };
 
 export const restore = async (req, res) => {
-	const data = await Zone.restore({ where: { id: req.params.id } });
-	if (!data) {
+	const { transaction } = req;
+
+	const zone = await Zone.findByPk(req.params.id, { paranoid: false, transaction });
+
+	if (!zone) {
 		return res.sendError(404, "Zone not found");
 	}
+
+	const racks = await Rack.findAll({
+		where: {
+			zoneId: req.params.id,
+		},
+		paranoid: false,
+		attributes: ["id"],
+		transaction,
+	});
+
+	const rackIds = racks.map((rack) => rack.id);
+	await Zone.restore({ where: { id: req.params.id }, transaction });
+	await Rack.restore({ where: { zoneId: req.params.id }, transaction });
+	await Shelf.restore({ where: { rackId: rackIds }, transaction });
 	return res.sendSuccess(200, "Zone restored successfully");
 };
 

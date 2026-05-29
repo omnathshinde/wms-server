@@ -38,8 +38,6 @@ export default async (req, res) => {
 
 	const isPasswordValid = await argon2.verify(user.password, password);
 
-	console.log(isPasswordValid);
-
 	if (!isPasswordValid) {
 		return res.sendError(401, "Invalid password");
 	}

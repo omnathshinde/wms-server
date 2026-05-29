@@ -1,7 +1,7 @@
-import databaseError from "#/src/app/errors/databaseError.js";
 import env from "#src/app/configs/env.js";
 import logger from "#src/app/configs/logger.js";
 import sequelize from "#src/app/database/index.js";
+import databaseError from "#src/app/errors/databaseError.js";
 import tableRelationship from "#src/app/helpers/TableRelationship.js";
 
 export default async () => {

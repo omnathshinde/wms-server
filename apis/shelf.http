@@ -1,8 +1,8 @@
-@url = http://localhost:3000
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ik9tbmF0aCBTaGluZGUiLCJ1c2VybmFtZSI6Im9tbmF0aCIsInJvbGVJZCI6Miwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTIzMzIiLCJpYXQiOjE3NjE2Mzk5MzN9.3_XamDTQQbangJh6TY5mzF7EeE1iuiyVQXqRMnrnLGQ
+@url = http://localhost:3000/shelf
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc3OTg3NjY1OH0.wFv1cd2E54_4Wbw4MEJobZ17XI1kmv2hmworeuOOUZ4
 
 ### Get all shelfs
-GET {{url}}/shelf?status=1&
+GET {{url}}?
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 
 ### Get all shelfs
-GET {{url}}/shelf/search/records?offset=0&limit=100&siteId=2
+GET {{url}}/search/records?limit=5&offset=0&status=0
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Get a specific shelf by ID
-GET {{url}}/shelf/1
+GET {{url}}/1
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 
 ### Create a new shelf
-POST {{url}}/shelf
+POST {{url}}
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -43,7 +43,7 @@ Content-Type: application/json
 
 
 ### Update a shelf
-PUT {{url}}/shelf/1
+PUT {{url}}/1
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -57,7 +57,13 @@ Content-Type: application/json
 
 
 ### Delete a shelf
-DELETE {{url}}/shelf/1
+DELETE {{url}}/1
+Authorization: {{token}}
+Content-Type: application/json
+
+
+### Restore a shelf
+DELETE {{url}}/1
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -66,7 +72,7 @@ Content-Type: application/json
 
 
 ### Create Bulk Users
-POST {{url}}/shelf/bulk-records
+POST {{url}}/bulk-records
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -83,10 +89,4 @@ Content-Type: application/json
     "rackId": 6,
     "name": "QA Analyst"
   }
-]
-
-#
-[
-  { "siteName": "Pune", "zoneName": "Supervisor", "rackName": "Rack1", "shelfName": "ShelfA" },
-  { "siteName": "Pune", "zoneName": "Supervisor", "rackName": "Rack1", "shelfName": "ShelfB" }
 ]
