@@ -3,7 +3,7 @@
 
 
 ### Get all putaways
-GET {{url}}?status=1&inwardId=1
+GET {{url}}?
 Authorization: {{token}}
 Content-Type: application/json
 

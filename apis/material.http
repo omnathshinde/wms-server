@@ -1,6 +1,5 @@
 @url = http://localhost:3000/material
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsIm5hbWUiOiIiLCJ1c2VybmFtZSI6ImdhbmVzaCIsInJvbGVJZCI6NCwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTYiLCJpYXQiOjE3NjA5Mzk3MTJ9.HzwQCSWnFpVtr7wi_5FR3xpcPcCWOy2ZhLYQZIU_AzQ
-
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc4MDEyOTYwMX0.21sghZFBISC_raHwq-xKP3t1sTWL2NCkTElMkP0UyK0
 
 ### Get all materials
 GET {{url}}?status=1&inStock=0
@@ -12,7 +11,7 @@ Content-Type: application/json
 
 
 ### Get all materials
-GET {{url}}/search/records?offset=0&limit=100&name
+GET {{url}}/search/records?
 Authorization: {{token}}
 Content-Type: application/json
 

@@ -35,9 +35,9 @@ Content-Type: application/json
 
 {
   "siteId": 2,
-  "materialId": 13,
+  "materialId": 5,
   "batch": "B-001",
-  "inwardQuantity": 2,
+  "inwardQuantity": 3,
   "invoice": "INV-123",
   "manufacturingDate": "2025-10-14",
   "autoSerial": true
@@ -83,7 +83,7 @@ Content-Type: application/json
 
 [
   {
-    "site": "Pune",
+    "site": "Bavdahan",
     "materialName": "Scanner",
     "materialDescription": "Scan",
     "shelfName": "Tester",
@@ -91,15 +91,15 @@ Content-Type: application/json
     "mrp": 1200,
     "invoice": "INV-1001",
     "manufacturingDate": "2025-10-14",
-    "barcode": "kljhads"
+    "barcode": "asdfasd"
   },
   {
-    "site": "Mumbai",
+    "site": "Bavdahan",
     "materialName": "Steel PLat",
     "materialDescription": "High-tensile steel roll",
     "batch": "B-2025A",
     "invoice": "INV-1002",
     "manufacturingDate": "2025-10-14",
-    "barcode": "mamkjdf"
+    "barcode": "adsfasdfads"
   }
 ]
