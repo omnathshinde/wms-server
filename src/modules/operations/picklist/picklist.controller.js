@@ -75,7 +75,16 @@ export const search = async (req, res) => {
 		.like("picklistStatus", picklistStatus)
 		.equal("isIssued", isIssued)
 		.like("name", name)
-		.orderBy("picklistStatus", "ASC")
+		.orderBy(
+			literal(`
+		CASE
+			WHEN picklistStatus = 'In Progress' THEN 1
+			WHEN picklistStatus = 'Pending' THEN 2
+			WHEN picklistStatus = 'Completed' THEN 3
+			ELSE 4
+		END`),
+			"ASC",
+		)
 		.like("customer.name", customerName, Customer)
 		.includeModel("customer", Customer, {
 			attributes: ["id", "name"],
