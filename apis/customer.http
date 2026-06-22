@@ -68,22 +68,14 @@ Authorization: {{token}}
 Content-Type: application/json
 
 
-### Create Bulk Users
+### Create Bulk customers
 POST {{url}}/bulk-records
 Authorization: {{token}}
 Content-Type: application/json
 
 [
-  {
-    "siteId": 1,
-    "name": "Suppervisor"
-  },
-  {
-    "siteId": 1,
-    "name": "Tester"
-  },
-  {
-    "siteId": 1,
-    "name": "QA Analyst"
-  }
+  { "siteId": 1, "name": "ARK India" },
+  { "siteId": 2, "name": "ABC Trader" },
+  { "siteId": 3, "name": "XYZ Industries" },
+  { "siteId": 4, "name": "LMN Hub" }
 ]

@@ -2,7 +2,7 @@
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
 
 ### Get all roleAccesss
-GET {{url}}?status=1&roleId=35
+GET {{url}}?status=1&roleId=3
 Authorization: {{token}}
 Content-Type: application/json
 

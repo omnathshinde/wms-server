@@ -11,6 +11,8 @@ import {
 } from "#src/models/index.js";
 
 export const getAll = async (req, res) => {
+	const { id: loggedInUserId, roleId } = req.user;
+
 	const {
 		offset,
 		limit,
@@ -22,11 +24,14 @@ export const getAll = async (req, res) => {
 		picklistStatus,
 		isIssued,
 	} = req.query;
+
+	const effectiveUserId = roleId === 1 ? userId : loggedInUserId;
+
 	const data = await req.queryBuilder
 		.site(req)
 		.status(status)
 		.paginate(offset, limit)
-		.equal("userId", userId)
+		.equal("userId", effectiveUserId)
 		.equal("customerId", customerId)
 		.equal("name", name)
 		.equal("picklistStatus", picklistStatus)
@@ -44,6 +49,8 @@ export const getAll = async (req, res) => {
 };
 
 export const search = async (req, res) => {
+	const { id: loggedInUserId, roleId } = req.user;
+
 	const {
 		offset,
 		limit,
@@ -55,11 +62,14 @@ export const search = async (req, res) => {
 		picklistStatus,
 		isIssued,
 	} = req.query;
+
+	const effectiveUserId = roleId === 1 ? userId : loggedInUserId;
+
 	const data = await req.queryBuilder
 		.site(req)
 		.status(status)
 		.paginate(offset, limit)
-		.equal("userId", userId)
+		.equal("userId", effectiveUserId)
 		.equal("customerId", customerId)
 		.like("name", name)
 		.like("picklistStatus", picklistStatus)

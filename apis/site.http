@@ -34,7 +34,7 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-  "name": "Wakad"
+  "name": "Nagpur"
 }
 
 
@@ -69,13 +69,8 @@ Authorization: {{token}}
 Content-Type: application/json
 
 [
-  {
-    "name": "Zunix"
-  },
-  {
-    "name": "Livguard"
-  },
-  {
-    "name": "Pune"
-  }
+  { "name": "Pune" },
+  { "name": "Mumbai" },
+  { "name": "Nagpur" },
+  { "name": "Chhatrapati Sambhajinagar" }
 ]

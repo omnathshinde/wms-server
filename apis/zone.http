@@ -1,5 +1,5 @@
 @url = http://localhost:3000/zone
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ik9tbmF0aCBTaGluZGUiLCJ1c2VybmFtZSI6Im9tbmF0aCIsInJvbGVJZCI6Miwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTIzMzIiLCJpYXQiOjE3NjIxNTQzMjJ9.twiDG7k_0qAP7ymeGlz75DYTb-4exxTCFyOTcnU_az0
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc4MTgzMTYzOX0.hwLD6PCuekVF4NQWAqboGA-oZJ4ub4fTy8ZeqQNjR8A
 
 ### Get all zones
 GET {{url}}?status=0
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 
 ### Get all zones
-GET {{url}}/search/records?offset=0&limit=2
+GET {{url}}/search/records
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -77,13 +77,8 @@ Authorization: {{token}}
 Content-Type: application/json
 
 [
-  {
-    "name": "Suppervisor"
-  },
-  {
-    "name": "Tester"
-  },
-  {
-    "name": "QA Analyst"
-  }
+  { "siteName": "Pune", "zoneName": "A-Zone" },
+  { "siteName": "Mumbai", "zoneName": "B-Zone" },
+  { "siteName": "Nagpur", "zoneName": "C-Zone" },
+  { "siteName": "Chhatrapati Sambhajinagar", "zoneName": "D-Zone" }
 ]

@@ -1,5 +1,5 @@
 @url = http://localhost:3000/inward
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwOTMzMjg3fQ.XmOJvfuW7yDc__gkHV3qh3LVjs8nlHjq_rG-HJ0uaqs
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc4MTgzMTYzOX0.hwLD6PCuekVF4NQWAqboGA-oZJ4ub4fTy8ZeqQNjR8A
 
 ### Get all inwards
 GET {{url}}?status=1&siteId=2
@@ -34,10 +34,10 @@ Authorization: {{token}}
 Content-Type: application/json
 
 {
-  "siteId": 2,
-  "materialId": 5,
+  "siteId": 1,
+  "materialId": 2,
   "batch": "B-001",
-  "inwardQuantity": 3,
+  "inwardQuantity": 4,
   "invoice": "INV-123",
   "manufacturingDate": "2025-10-14",
   "autoSerial": true

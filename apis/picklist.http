@@ -2,7 +2,7 @@
 @token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlByaXRhbSIsInVzZXJuYW1lIjoicHJpdGFtIiwicm9sZUlkIjoxLCJzaXRlSWQiOjEsImVtcGxveWVlSWQiOiJhZGYyMyIsImlhdCI6MTc2MTU0NzExOH0.Bso_2d2JH0wHGwyshoKxapwCesmWo_R8wi7VZIdDRNE
 
 ### Get all picklists
-GET {{url}}?status=1
+GET {{url}}??status=1&offset=0&limit=5&picklistStatus=
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -35,22 +35,16 @@ Content-Type: application/json
 
 [
   {
-    "materialName": "Steel Rod 6mm",
-    "customerName": "Tata Steel",
+    "materialName": "Battery",
+    "customerName": "ARK India",
     "materialDescription": "Used in construction",
-    "quantity": 40
+    "quantity": 2
   },
   {
-    "materialName": "Laptop",
-    "customerName": "Tata Steel",
+    "materialName": "Battery",
+    "customerName": "ABC Trader",
     "materialDescription": "Used in construction",
-    "quantity": 3
-  },
-  {
-    "materialName": "Copper Wire",
-    "customerName": "Reliance",
-    "materialDescription": "High-grade electrical wire",
-    "quantity": 25
+    "quantity": 4
   }
 ]
 

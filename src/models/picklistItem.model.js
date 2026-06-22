@@ -35,6 +35,11 @@ export default (sequelize) => {
 				allowNull: false,
 				defaultValue: 0,
 			},
+			picklistItemStatus: {
+				type: DataTypes.ENUM("Pending", "In Progress", "Completed"),
+				allowNull: false,
+				defaultValue: "Pending",
+			},
 		},
 		{
 			sequelize,

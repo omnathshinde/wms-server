@@ -1,5 +1,5 @@
 @url = http://localhost:3000/material
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc4MDEyOTYwMX0.21sghZFBISC_raHwq-xKP3t1sTWL2NCkTElMkP0UyK0
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6Ik9tbmF0aCBTaGluZGUiLCJ1c2VybmFtZSI6Im9tbmF0aCIsInJvbGVJZCI6MSwic2l0ZUlkIjoxLCJlbXBsb3llZUlkIjoiMTEiLCJpYXQiOjE3ODE4MzQxNDZ9.l3BhhfD0bthvdMgjHGR0VCSqXnWCDTlQI8DLsOhV7Nw
 
 ### Get all materials
 GET {{url}}?status=1&inStock=0
@@ -85,7 +85,7 @@ Authorization: {{token}}
 Content-Type: application/json
 
 
-### Create Bulk Users
+### Create Bulk materials
 POST {{url}}/bulk-records
 Authorization: {{token}}
 Content-Type: application/json

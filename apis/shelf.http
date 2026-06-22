@@ -78,15 +78,21 @@ Content-Type: application/json
 
 [
   {
-    "rackId": 6,
-    "name": "Suppervisor"
+    "siteName": "Pune",
+    "zoneName": "A-Zone",
+    "rackName": "R1",
+    "shelfName": "S1"
   },
   {
-    "rackId": 6,
-    "name": "Tester"
+    "siteName": "Pune",
+    "zoneName": "A-Zone",
+    "rackName": "R1",
+    "shelfName": "S2"
   },
   {
-    "rackId": 6,
-    "name": "QA Analyst"
+    "siteName": "Pune",
+    "zoneName": "A-Zone",
+    "rackName": "R2-A-Pune",
+    "shelfName": "S3"
   }
 ]

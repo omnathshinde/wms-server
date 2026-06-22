@@ -1,4 +1,4 @@
-import { Material, PicklistItem } from "#src/models/index.js";
+import { Material, Picklist, PicklistItem } from "#src/models/index.js";
 
 export const getAll = async (req, res) => {
 	const {
@@ -27,6 +27,7 @@ export const search = async (req, res) => {
 		limit,
 		status,
 		picklistId,
+		picklistName,
 		materialId,
 		materialName,
 		materialDescription,
@@ -36,8 +37,12 @@ export const search = async (req, res) => {
 		.paginate(offset, limit)
 		.equal("picklistId", picklistId)
 		.equal("materialId", materialId)
-		.equal("materialName", materialName)
-		.equal("materialDescription", materialDescription)
+		.like("materialName", materialName)
+		.like("materialDescription", materialDescription)
+		.equal("picklist.name", picklistName, Picklist)
+		.includeModel("picklist", Picklist, {
+			attributes: ["id", "name"],
+		})
 		.findAndCountAll(PicklistItem);
 	return res.sendSuccess(200, data);
 };
@@ -83,4 +88,47 @@ export const create = async (req, res) => {
 	);
 
 	return res.sendSuccess(201, "Picklist item created successfully", picklistItem);
+};
+
+export const update = async (req, res) => {
+	const { transaction } = req;
+	const { id } = req.params;
+	const { materialQuantity } = req.body;
+
+	if (!id) {
+		return res.sendError(400, "Picklist item ID is required");
+	}
+
+	if (materialQuantity === undefined || materialQuantity === null) {
+		return res.sendError(400, "materialQuantity is required");
+	}
+
+	const picklistItem = await PicklistItem.findByPk(id, {
+		include: [{ model: Material, as: "material" }],
+		transaction,
+	});
+
+	if (!picklistItem) {
+		return res.sendError(404, "Picklist item not found");
+	}
+
+	const material = await Material.findByPk(picklistItem.materialId, { transaction });
+	if (!material) {
+		return res.sendError(404, "Linked material not found");
+	}
+
+	if (materialQuantity > material.quantity) {
+		return res.sendError(
+			400,
+			`Cannot pick more than stock quantity (${material.quantity})`,
+		);
+	}
+	if (materialQuantity < picklistItem.pickedQuantity) {
+		return res.sendError(
+			400,
+			`New quantity cannot be less than already picked (${picklistItem.pickedQuantity})`,
+		);
+	}
+	const updatedItem = await PicklistItem.findByPk(id, { transaction });
+	return res.sendSuccess(200, "Picklist item updated successfully", updatedItem);
 };

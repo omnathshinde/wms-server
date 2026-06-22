@@ -3,7 +3,6 @@ import { col, Op } from "sequelize";
 import {
 	FifoViolation,
 	Inward,
-	Material,
 	Picklist,
 	PicklistItem,
 	PicklistItemBarcode,
@@ -44,6 +43,7 @@ export const search = async (req, res) => {
 		picklistItemId,
 		inwardId,
 		barcode,
+		materialName,
 		shelf,
 	} = req.query;
 	const data = await req.queryBuilder
@@ -54,6 +54,7 @@ export const search = async (req, res) => {
 		.like("barcode", barcode)
 		.like("shelf", shelf)
 		.equal("picklistItem.picklistId", picklistId, PicklistItem)
+		.like("picklistItem.materialName", materialName, PicklistItem)
 		.includeModel("picklistItem", PicklistItem, {
 			attributes: ["picklistId", "materialName"],
 		})
@@ -210,49 +211,6 @@ export const create = async (req, res) => {
 	else picklistStatus = "In Progress";
 
 	return res.sendSuccess(201, { picklistStatus });
-};
-
-export const update = async (req, res) => {
-	const { transaction } = req;
-	const { id } = req.params;
-	const { materialQuantity } = req.body;
-
-	if (!id) {
-		return res.sendError(400, "Picklist item ID is required");
-	}
-
-	if (materialQuantity === undefined || materialQuantity === null) {
-		return res.sendError(400, "materialQuantity is required");
-	}
-
-	const picklistItem = await PicklistItem.findByPk(id, {
-		include: [{ model: Material, as: "material" }],
-		transaction,
-	});
-
-	if (!picklistItem) {
-		return res.sendError(404, "Picklist item not found");
-	}
-
-	const material = await Material.findByPk(picklistItem.materialId, { transaction });
-	if (!material) {
-		return res.sendError(404, "Linked material not found");
-	}
-
-	if (materialQuantity > material.quantity) {
-		return res.sendError(
-			400,
-			`Cannot pick more than stock quantity (${material.quantity})`,
-		);
-	}
-	if (materialQuantity < picklistItem.pickedQuantity) {
-		return res.sendError(
-			400,
-			`New quantity cannot be less than already picked (${picklistItem.pickedQuantity})`,
-		);
-	}
-	const updatedItem = await PicklistItem.findByPk(id, { transaction });
-	return res.sendSuccess(200, "Picklist item updated successfully", updatedItem);
 };
 
 export const destroy = async (req, res) => {
@@ -492,7 +450,24 @@ export const bulkCreate = async (req, res) => {
 	if (pendingItems === 0) picklistStatus = "Completed";
 	else picklistStatus = "In Progress";
 
+	let message = "Barcode processed successfully";
+
+	if (picklistStatus === "Completed") {
+		message = "Picklist completed successfully";
+	} else if (createdBarcodes.length > 0 || restoredBarcodes.length > 0) {
+		message = "Barcode picked successfully";
+	}
+
+	if (
+		skippedBarcodes.length > 0 &&
+		createdBarcodes.length === 0 &&
+		restoredBarcodes.length === 0
+	) {
+		message = "No barcode was picked";
+	}
+
 	return res.sendSuccess(201, {
+		message,
 		picklistStatus,
 		created: createdBarcodes.length,
 		restored: restoredBarcodes.length,

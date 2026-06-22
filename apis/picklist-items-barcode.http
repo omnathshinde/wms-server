@@ -3,7 +3,7 @@
 
 
 ### Get all picklist-items-barcodes
-GET {{url}}?status=1
+GET {{url}}?status=1&picklistId=
 Authorization: {{token}}
 Content-Type: application/json
 

@@ -11,7 +11,7 @@ Content-Type: application/json
 
 
 ### Get all picklist-items
-GET {{url}}/search/records?offset=0&limit=100&siteName=l
+GET {{url}}/search/records?picklistId=1&materialName=b
 Authorization: {{token}}
 Content-Type: application/json
 

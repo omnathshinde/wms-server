@@ -1,5 +1,5 @@
 @url = http://localhost:3000
-@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWRtaW4iLCJlbXBsb3llZUlkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlSWQiOjEsInNpdGVJZCI6bnVsbCwiaWF0IjoxNzYwNTI3Nzg4fQ.wwjBHuwj0zFtB9rr0vxyInsERWVl_F6pEM6UXDjsJAQ
+@token = JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVJZCI6MSwic2l0ZUlkIjpudWxsLCJlbXBsb3llZUlkIjoiMSIsImlhdCI6MTc4MTgzMTYzOX0.hwLD6PCuekVF4NQWAqboGA-oZJ4ub4fTy8ZeqQNjR8A
 
 ### Get all users
 GET {{url}}/user?status=0
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Get a specific user by ID
-GET {{url}}/user/20
+GET {{url}}/user/1
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -62,7 +62,7 @@ Content-Type: application/json
 
 
 ### Delete a user
-DELETE {{url}}/user/7
+DELETE {{url}}/user/
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -77,39 +77,29 @@ Content-Type: application/json
 
 [
   {
-    "username": "admin",
-    "password": "12345"
-  },
-  {
     "siteId": 1,
-    "roleId": 2,
+    "roleId": 1,
     "employeeId": 11,
     "username": "omnath",
     "password": "12345"
   },
   {
     "siteId": 2,
-    "roleId": 3,
+    "roleId": 2,
     "employeeId": 12,
     "username": "shubham",
     "password": "12345"
   },
   {
     "siteId": 3,
+    "roleId": 3,
     "employeeId": 14,
     "username": "yug",
     "password": "12345"
   },
   {
-    "siteId": 3,
-    "roleId": 3,
-    "employeeId": 15,
-    "username": "sagar",
-    "password": "12345"
-  },
-  {
-    "siteId": 7,
-    "roleId": 2,
+    "siteId": 4,
+    "roleId": 4,
     "employeeId": 13,
     "username": "sachin",
     "password": "12345"
